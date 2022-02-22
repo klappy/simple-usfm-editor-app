@@ -1,0 +1,22 @@
+html {
+  font-family: sans-serif;
+  /* text-align: center; */
+  background-color: antiquewhite;
+}
+
+#offset {
+  min-height: 3em;
+}
+
+.section .heading {
+  border-bottom-color: lightgray;
+}
+
+.usfm .preview .c .number {
+  font-size: 2.5em;
+}
+
+.usfm .preview .c .number {
+  top: 0.5em;
+  position: relative;
+}
