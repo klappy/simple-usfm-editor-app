@@ -18,7 +18,7 @@ export default function Layout({ state, actions }) {
     ...props
   }) => (
     <Accordion
-      // TransitionProps={{ unmountOnExit: true }}
+      TransitionProps={{ unmountOnExit: true }}
       expanded={index === state.sectionIndex}
       data-test-id='sectionComponent'
       onChange={() => actions.setSectionIndex(index)}
@@ -26,7 +26,7 @@ export default function Layout({ state, actions }) {
       dir={dir}
       {...props}
     >
-      {children}
+      {[children]}
     </Accordion>
   );
   // headingComponent: (props) => (<h2 class='heading' {...props}>{props.text}</h2>),
@@ -58,13 +58,16 @@ export default function Layout({ state, actions }) {
 
   const onSectionClick = () => {};
 
+  const onBlockClick = () => {};
+
   const editorProps = {
     ...state,
     onText: actions.setText,
     sectionComponent,
-    onSectionClick,
     headingComponent,
     sectionBodyComponent,
+    onSectionClick,
+    onBlockClick,
     blockComponent,
   };
   return <UsfmEditor {...editorProps} />;

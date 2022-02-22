@@ -1,11 +1,11 @@
 html {
   font-family: sans-serif;
   /* text-align: center; */
-  background-color: antiquewhite;
+  background-color: gray;
 }
 
 #offset {
-  min-height: 4em;
+  min-height: 4.5em;
 }
 
 .section .heading {
