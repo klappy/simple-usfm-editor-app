@@ -1,6 +1,6 @@
 module.exports = {
   extends: ["eslint:recommended", "plugin:react/recommended", "@unfoldingword"],
-  plugins: ["react", "cypress", "chai-friendly"],
+  plugins: ["react", "chai-friendly"],
   rules: {
     "react/jsx-tag-spacing": ["error"],
     "react/jsx-closing-bracket-location": ["error", "line-aligned"]
@@ -9,6 +9,5 @@ module.exports = {
     browser: true,
     node: true,
     jest: true,
-    "cypress/globals": true
   }
 };

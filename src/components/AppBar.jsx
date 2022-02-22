@@ -1,5 +1,12 @@
-import * as React from "react";
-import { AppBar, Box, Toolbar, Typography, Button } from "@mui/material";
+/* eslint-disable react/prop-types */
+import * as React from 'react';
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  Typography,
+  Button,
+} from '@mui/material';
 
 export default function ButtonAppBar({ title, children }) {
   return (
@@ -10,7 +17,7 @@ export default function ButtonAppBar({ title, children }) {
             {title}
           </Typography>
           {children}
-          <Button color="inherit">Save</Button>
+          <Button data-test-id='button-save' color="inherit">Save</Button>
         </Toolbar>
       </AppBar>
     </Box>

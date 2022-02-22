@@ -1,44 +1,46 @@
-import React, { useCallback } from "react";
-import { ToggleButton, ToggleButtonGroup } from "@mui/material";
-import { ViewStream, Subject, Edit, Preview } from "@mui/icons-material";
+/* eslint-disable react/prop-types */
+import React, { useCallback, useMemo } from 'react';
+import { ToggleButton, ToggleButtonGroup } from '@mui/material';
+import {
+  ViewStream,
+  Subject,
+  Edit,
+  Preview,
+} from '@mui/icons-material';
 
 export default function ToggleButtons({ state, actions: { setToggles } }) {
-  let toggles = [];
-  if (state.sectionable) toggles.push("sectionable");
-  if (state.blockable) toggles.push("blockable");
-  if (state.editable) toggles.push("editable");
-  if (state.preview) toggles.push("preview");
+  const togglesAll = useMemo(() => ['sectionable', 'blockable', 'editable', 'preview'], []);
+  const toggles = togglesAll.filter(toggle => state[toggle] );
 
-  const handleToggles = useCallback(
-    (event, newToggles) => {
-      const sectionable = newToggles.includes("sectionable");
-      const blockable = newToggles.includes("blockable");
-      const editable = newToggles.includes("editable");
-      const preview = newToggles.includes("preview");
-      const _toggles = { sectionable, blockable, editable, preview };
-      setToggles(_toggles);
-    },
-    [setToggles]
-  );
+  const handleToggles = useCallback((event, newToggles) => {
+    const _toggles = {};
+
+    togglesAll.forEach(toggle => {
+      _toggles[toggle] = newToggles.includes(toggle);
+    });
+
+    setToggles(_toggles);
+  }, [setToggles, togglesAll]);
 
   return (
     <ToggleButtonGroup
+      data-test-id='ToggleButtonGroup'
       value={toggles}
       onChange={handleToggles}
       aria-label="text formatting"
     >
-      <ToggleButton value="sectionable" aria-label="sectionable">
+      <ToggleButton data-test-id='ToggleButtonSectionable' value="sectionable" aria-label="sectionable">
         <ViewStream />
       </ToggleButton>
-      <ToggleButton value="blockable" aria-label="blockable">
+      <ToggleButton data-test-id='ToggleButtonBlockable' value="blockable" aria-label="blockable">
         <Subject />
       </ToggleButton>
-      <ToggleButton value="editable" aria-label="editable">
+      <ToggleButton data-test-id='ToggleButtonEditable' value="editable" aria-label="editable">
         <Edit />
       </ToggleButton>
-      <ToggleButton value="preview" aria-label="preview">
+      <ToggleButton data-test-id='ToggleButtonPreview' value="preview" aria-label="preview">
         <Preview />
       </ToggleButton>
     </ToggleButtonGroup>
   );
-}
+};
