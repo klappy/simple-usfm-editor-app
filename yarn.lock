@@ -10250,10 +10250,10 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
-simple-text-editor-rcl@3.7.1:
-  version "3.7.1"
-  resolved "https://registry.yarnpkg.com/simple-text-editor-rcl/-/simple-text-editor-rcl-3.7.1.tgz#b3d6d8092610987bca8bc633a6aa2409cc294187"
-  integrity sha512-PZcCAAn1sKmB5NeQgOWrjdS6calielgK11apGVG1/mKLD+ObLyr4b4S1AQCLKjtDcC9ov3Q2TwIAGVrsqtP0SQ==
+simple-text-editor-rcl@3.9.0:
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/simple-text-editor-rcl/-/simple-text-editor-rcl-3.9.0.tgz#e23808329bde5330420efb5aa6b39b3703d9bb2a"
+  integrity sha512-lYxW8/ruA6BxvvMeYzbrSOFKkzvxHsT8yFz9gBhOs5xrM1ZE3HE549CDNDcj1HzSDZ5KQk0POMMyGKTcc5ZRhg==
   dependencies:
     use-deep-compare "^1.1.0"
 
