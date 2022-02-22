@@ -3,13 +3,13 @@ import { useDeepCompareCallback } from 'use-deep-compare';
 
 export default function useApplicationState() {
   const initialState = {
-    title: 'Simple USFM Editor App',
+    title: 'Simple USFM',
     text: '',
     blockable: false,
-    editable: true,
-    preview: false,
+    editable: false,
+    preview: true,
     sectionIndex: 1,
-    sectionable: true,
+    sectionable: false,
   };
   const [state, setState] = useState(initialState);
 

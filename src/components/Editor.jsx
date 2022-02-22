@@ -41,7 +41,7 @@ export default function Layout({ state, actions }) {
       id={`panel${index}a-header`}
       className="heading"
     >
-      <Typography {...props}>{text.split('\n')[0]}</Typography>
+      <Typography {...props}>{text.split('\n')[0].replace(/\\\w+/, '')}</Typography>
     </AccordionSummary>
   );
   // sectionBodyComponent: ({children, ...props}) => (<div class='body' {...props}>{children}</div>),

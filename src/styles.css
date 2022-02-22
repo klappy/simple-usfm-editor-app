@@ -12,6 +12,13 @@ html {
   border-bottom-color: lightgray;
 }
 
+.section .heading p {
+  font-size: 1.5em;
+  font-weight: 700;
+  text-align: center;
+  width: 100%;
+}
+
 .usfm .preview .c .number {
   font-size: 2.4em;
 }
