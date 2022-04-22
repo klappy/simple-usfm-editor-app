@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { useDeepCompareCallback } from 'use-deep-compare';
+import { useState, useCallback } from 'react';
 
 export default function useApplicationState() {
   const initialState = {
@@ -10,36 +9,46 @@ export default function useApplicationState() {
     preview: true,
     sectionIndex: 1,
     sectionable: false,
+    font: 'Arial',
+    fontSize: '1em',
   };
   const [state, setState] = useState(initialState);
 
-  const setText = useDeepCompareCallback((text) => {
-    setState({ ...state, text });
-  }, [state]);
+  const setText = useCallback((text) => {
+    setState((prev) => ({ ...prev, text }));
+  }, []);
 
-  const setBlockable = useDeepCompareCallback((blockable) => {
-    setState({ ...state, blockable });
-  }, [state]);
+  const setBlockable = useCallback((blockable) => {
+    setState((prev) => ({ ...prev, blockable }));
+  }, []);
 
-  const setEditable = useDeepCompareCallback((editable) => {
-    setState({ ...state, editable });
-  }, [state]);
+  const setEditable = useCallback((editable) => {
+    setState((prev) => ({ ...prev, editable }));
+  }, []);
 
-  const setPreview = useDeepCompareCallback((preview) => {
-    setState({ ...state, preview });
-  }, [state]);
+  const setPreview = useCallback((preview) => {
+    setState((prev) => ({ ...prev, preview }));
+  }, []);
 
-  const setSectionIndex = useDeepCompareCallback((sectionIndex) => {
-    setState({ ...state, sectionIndex });
-  }, [state]);
+  const setSectionIndex = useCallback((sectionIndex) => {
+    setState((prev) => ({ ...prev, sectionIndex }));
+  }, []);
 
-  const setSectionable = useDeepCompareCallback((sectionable) => {
-    setState({ ...state, sectionable });
-  }, [state]);
+  const setSectionable = useCallback((sectionable) => {
+    setState((prev) => ({ ...prev, sectionable }));
+  }, []);
 
-  const setToggles = useDeepCompareCallback((toggles) => {
-    setState({ ...state, ...toggles });
-  }, [state]);
+  const setToggles = useCallback((toggles) => {
+    setState((prev) => ({ ...prev, ...toggles }));
+  }, []);
+
+  const setFont = useCallback((font) => {
+    setState((prev) => ({ ...prev, font }));
+  }, []);
+
+  const setFontSize = useCallback((fontSize) => {
+    setState((prev) => ({ ...prev, fontSize }));
+  }, []);
 
   const actions = {
     setText,
@@ -49,7 +58,10 @@ export default function useApplicationState() {
     setSectionIndex,
     setSectionable,
     setToggles,
+    setFont,
+    setFontSize,
   };
+
 
   return { state, actions };
 }

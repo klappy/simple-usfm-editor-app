@@ -4,6 +4,7 @@ import React from 'react';
 import AppBar from './components/AppBar';
 import ToggleButtons from './components/ToggleButtons';
 import Editor from './components/Editor';
+import FontConfiguration from './components/FontConfiguration';
 
 export default function Layout({ state, actions }) {
   const actionButtons = (
@@ -13,10 +14,13 @@ export default function Layout({ state, actions }) {
   return (
     <>
       <AppBar title={state.title}>
+        <FontConfiguration state={state} actions={actions} />
         {actionButtons}
       </AppBar>
       <div id="offset"></div>
-      <Editor state={state} actions={actions} />
+      <div style={{ fontFamily: state.font, fontSize: state.fontSize }}>
+        <Editor state={state} actions={actions} />
+      </div>
     </>
   );
 }

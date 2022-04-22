@@ -4,12 +4,12 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Typography,
 } from '@mui/material';
 import { ExpandMore } from '@mui/icons-material';
 import { UsfmEditor } from 'simple-text-editor-rcl';
 
 export default function Layout({ state, actions }) {
+  console.log(state.font);
   // sectionComponent: ({children, dir, ...props}) => (<div class={ 'section ' + dir } dir={dir} {...props}>{children}</div>),
   const sectionComponent = ({
     children,
@@ -24,6 +24,7 @@ export default function Layout({ state, actions }) {
       onChange={() => actions.setSectionIndex(index)}
       className={'section ' + dir}
       dir={dir}
+      key={index}
       {...props}
     >
       {[children]}
@@ -41,7 +42,7 @@ export default function Layout({ state, actions }) {
       id={`panel${index}a-header`}
       className="heading"
     >
-      <Typography {...props}>{text.split('\n')[0].replace(/\\\w+/, '')}</Typography>
+      {[<p key={1} {...props}>{text.split('\n')[0].replace(/\\\w+/, '')}</p>]}
     </AccordionSummary>
   );
   // sectionBodyComponent: ({children, ...props}) => (<div class='body' {...props}>{children}</div>),
@@ -52,8 +53,11 @@ export default function Layout({ state, actions }) {
   );
 
   // eslint-disable-next-line no-unused-vars
-  const blockComponent = ({ text, ..._props }) => (
-    <div className="block" style={{ whiteSpace: 'pre-wrap' }} {..._props} />
+  const blockComponent = ({
+    // eslint-disable-next-line no-unused-vars
+    text, index, ..._props
+  }) => (
+    <div key={index} className="block" style={{ whiteSpace: 'pre-wrap' }} {..._props} />
   );
 
   const onSectionClick = () => {};

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import * as React from 'react';
+import React from 'react';
 import {
   AppBar,
   Box,
@@ -22,4 +22,4 @@ export default function ButtonAppBar({ title, children }) {
       </AppBar>
     </Box>
   );
-}
+};
