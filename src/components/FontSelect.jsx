@@ -23,14 +23,14 @@ export default function FontSelect({
   const detectedGraphiteFonts = useDetectFonts({ fonts: (isGraphiteAssumed ? graphiteFonts : []), testString });
   const graphiteFontMenuItems = detectedGraphiteFonts.map((font, index) => (
     <MenuItem key={index} value={font.name}>
-      <Typography variant="body2" component="span">{font.name}</Typography>
+      <Typography variant="body2" component="span" style={{ fontFamily: font.name }}>{font.name}</Typography>
     </MenuItem>
   ));
   //Detecting fonts:
   const detectedFonts = useDetectFonts({ fonts: regularFonts, testString });
   const detectedFontsComponents = detectedFonts.map((font, index) => (
     <MenuItem key={index} value={font.name}>
-      <Typography variant="body2" component="span">{font.name}</Typography>
+      <Typography variant="body2" component="span" style={{ fontFamily: font.name }}>{font.name}</Typography>
     </MenuItem>
   ));
 
