@@ -11,6 +11,7 @@ import {
   fontList as regularFonts,
   graphiteEnabledFontList as graphiteFonts,
 } from 'font-detect-rhl';
+import { Typography } from '@mui/material';
 
 export default function FontSelect({
   font='Arial',
@@ -22,14 +23,14 @@ export default function FontSelect({
   const detectedGraphiteFonts = useDetectFonts({ fonts: (isGraphiteAssumed ? graphiteFonts : []), testString });
   const graphiteFontMenuItems = detectedGraphiteFonts.map((font, index) => (
     <MenuItem key={index} value={font.name}>
-      {font.name}
+      <Typography variant="body2" component="span">{font.name}</Typography>
     </MenuItem>
   ));
   //Detecting fonts:
   const detectedFonts = useDetectFonts({ fonts: regularFonts, testString });
   const detectedFontsComponents = detectedFonts.map((font, index) => (
     <MenuItem key={index} value={font.name}>
-      {font.name}
+      <Typography variant="body2" component="span">{font.name}</Typography>
     </MenuItem>
   ));
 
@@ -37,21 +38,27 @@ export default function FontSelect({
     onFont(event.target.value);
   };
 
-  const noneDetectedMsg = 'none detected';
+  const noneDetectedMsg = <Typography variant="body2" component="span">none detected</Typography>;
+  const labelStyle = {
+    background: 'white',
+    borderRadius: '0.25em',
+    padding: '0 0.25em 0 0.2em',
+  };
 
   return (
     <FormControl size="small" fullWidth>
-      <InputLabel id="font-select-label">Font</InputLabel>
+      <InputLabel id="font-select-label" style={labelStyle}>Font</InputLabel>
       <Select
         labelId="font-select-label"
         id="font-select"
         data-test-id="font-select"
         value={font}
         label="Font"
+        style={{ background: 'white' }}
         onChange={handleChange}
       >
         <MenuItem key={1} value="Arial">
-          default
+          <Typography variant="body2" component="span">default</Typography>
         </MenuItem>
         {isGraphiteAssumed && <hr />}
         <b>

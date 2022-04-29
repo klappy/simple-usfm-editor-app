@@ -29,16 +29,16 @@ export default function ToggleButtons({ state, actions: { setToggles } }) {
       onChange={handleToggles}
       aria-label="text formatting"
     >
-      <ToggleButton data-test-id='ToggleButtonSectionable' value="sectionable" aria-label="sectionable">
+      <ToggleButton style={{ color: 'white' }} data-test-id='ToggleButtonSectionable' value="sectionable" aria-label="sectionable">
         <ViewStream />
       </ToggleButton>
-      <ToggleButton data-test-id='ToggleButtonBlockable' value="blockable" aria-label="blockable">
+      <ToggleButton style={{ color: 'white' }} data-test-id='ToggleButtonBlockable' value="blockable" aria-label="blockable">
         <Subject />
       </ToggleButton>
-      <ToggleButton data-test-id='ToggleButtonEditable' value="editable" aria-label="editable">
+      <ToggleButton style={{ color: 'white' }} data-test-id='ToggleButtonEditable' value="editable" aria-label="editable">
         <Edit />
       </ToggleButton>
-      <ToggleButton data-test-id='ToggleButtonPreview' value="preview" aria-label="preview">
+      <ToggleButton style={{ color: 'white' }} data-test-id='ToggleButtonPreview' value="preview" aria-label="preview">
         <Preview />
       </ToggleButton>
     </ToggleButtonGroup>
