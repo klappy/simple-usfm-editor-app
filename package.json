@@ -13,7 +13,7 @@
     "lorem-ipsum-usfm": "0.3.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "simple-text-editor-rcl": "3.9.0",
+    "simple-text-editor-rcl": "^3.10.0",
     "use-deep-compare": "1.1.0"
   },
   "devDependencies": {
