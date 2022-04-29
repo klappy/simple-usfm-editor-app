@@ -8,8 +8,8 @@ import Select from '@mui/material/Select';
 import {
   useDetectFonts,
   useAssumeGraphite,
-  useFonts as regularFonts,
-  useGraphiteEnabledFonts as graphiteFonts,
+  fontList as regularFonts,
+  graphiteEnabledFontList as graphiteFonts,
 } from 'font-detect-rhl';
 
 export default function FontSelect({
