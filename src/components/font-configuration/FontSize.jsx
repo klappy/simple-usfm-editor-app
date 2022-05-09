@@ -17,7 +17,8 @@ export default function FontSize({
   const labelStyle = {
     background: 'white',
     borderRadius: '0.25em',
-    padding: '0 0.25em 0 0.2em',
+    padding: '0px 0.5em 0px 0.5em',
+    marginLeft: '-0.25em',
   };
 
   return (

@@ -25,28 +25,41 @@ export default function FontSelect({
   const isGraphiteAssumed = useAssumeGraphite({ testClient: 'firefox', alwaysUse: false });
   const detectedGraphiteFonts = useDetectFonts({ fonts: (isGraphiteAssumed ? graphiteFonts : []), testString });
 
+  const noneDetectedMsg = 'none detected';
+
   const graphiteFontMenuItems = detectedGraphiteFonts.map((font, index) => (
-    <MenuItem key={index} value={font.name}>
+    <MenuItem key={index} value={font.name} dense>
       <FontMenuItem font={font} />
     </MenuItem>
   ));
+
+  const graphiteFontMenuSection = [
+    <MenuItem key='graphiteFonts' divider disabled>Graphite-Enabled Fonts: {!graphiteFontMenuItems.length && noneDetectedMsg}</MenuItem>,
+    ...graphiteFontMenuItems,
+  ];
+
   //Detecting fonts:
   const detectedFonts = useDetectFonts({ fonts: regularFonts, testString });
   const detectedFontMenuItems = detectedFonts.map((font, index) => (
-    <MenuItem key={index} value={font.name}>
+    <MenuItem key={index} value={font.name} dense>
       <FontMenuItem font={font} />
     </MenuItem>
   ));
+
+  const detectedFontMenuSection = [
+    <MenuItem key='detectedFonts' divider disabled>Detected Fonts: {!detectedFontMenuItems && noneDetectedMsg}</MenuItem>,
+    ...detectedFontMenuItems,
+  ];
 
   const handleChange = (event) => {
     onFont(event.target.value);
   };
 
-  const noneDetectedMsg = <Typography variant="body2" component="span">none detected</Typography>;
   const labelStyle = {
     background: 'white',
     borderRadius: '0.25em',
-    padding: '0 0.25em 0 0.2em',
+    padding: '0px 0.5em 0px 0.5em',
+    marginLeft: '-0.25em',
   };
 
   return (
@@ -61,23 +74,11 @@ export default function FontSelect({
         style={{ background: 'white' }}
         onChange={handleChange}
       >
-        <MenuItem key={1} value="inherit">
+        <MenuItem key={1} value="inherit" divider>
           <Typography variant="body2" component="span">default</Typography>
         </MenuItem>
-        {isGraphiteAssumed && <hr />}
-        <b>
-          {isGraphiteAssumed && 'Graphite-Enabled Fonts:'}
-          {graphiteFontMenuItems.length === 0 &&
-            isGraphiteAssumed &&
-            noneDetectedMsg}
-        </b>
-        {graphiteFontMenuItems}
-        <hr />
-        <b>
-          Detected Fonts:{' '}
-          {detectedFontMenuItems.length === 0 && noneDetectedMsg}
-        </b>
-        {detectedFontMenuItems}
+        {isGraphiteAssumed && graphiteFontMenuSection}
+        {detectedFontMenuSection}
       </Select>
     </FormControl>
   );
