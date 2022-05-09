@@ -4,7 +4,7 @@ import React from 'react';
 import AppBar from './components/AppBar';
 import ToggleButtons from './components/ToggleButtons';
 import Editor from './components/Editor';
-import FontConfiguration from './components/FontConfiguration';
+import FontConfiguration from './components/font-configuration/FontConfiguration';
 
 export default function Layout({ state, actions }) {
   const actionButtons = (

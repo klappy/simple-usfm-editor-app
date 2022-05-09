@@ -12,7 +12,6 @@ export default function Layout({ state, actions }) {
   console.log(state.font);
   // sectionComponent: ({children, dir, ...props}) => (<div class={ 'section ' + dir } dir={dir} {...props}>{children}</div>),
   const sectionComponent = ({
-    children,
     index,
     dir,
     ...props
@@ -27,7 +26,6 @@ export default function Layout({ state, actions }) {
       key={index}
       {...props}
     >
-      {[children]}
     </Accordion>
   );
   // headingComponent: (props) => (<h2 class='heading' {...props}>{props.text}</h2>),
@@ -41,13 +39,18 @@ export default function Layout({ state, actions }) {
       aria-controls={`panel${index}a-content`}
       id={`panel${index}a-header`}
       className="heading"
+      key={index}
     >
-      {[<p key={1} {...props}>{text.split('\n')[0].replace(/\\\w+/, '')}</p>]}
+      {[<p key={index} {...props}>{text.split('\n')[0].replace(/\\\w+/, '')}</p>]}
     </AccordionSummary>
   );
   // sectionBodyComponent: ({children, ...props}) => (<div class='body' {...props}>{children}</div>),
-  const sectionBodyComponent = ({ children, ...props }) => (
-    <AccordionDetails className="body" style={{ padding: '0' }} {...props}>
+  const sectionBodyComponent = ({
+    children,
+    index,
+    ...props
+  }) => (
+    <AccordionDetails key={index} className="body" style={{ padding: '0' }} {...props}>
       {children}
     </AccordionDetails>
   );

@@ -1,9 +1,12 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import {
+  InputLabel,
+  MenuItem,
+  FormControl,
+  Select,
+  Typography,
+} from '@mui/material';
 
 import {
   useDetectFonts,
@@ -11,7 +14,7 @@ import {
   fontList as regularFonts,
   graphiteEnabledFontList as graphiteFonts,
 } from 'font-detect-rhl';
-import { Typography } from '@mui/material';
+import FontMenuItem from './FontMenuItem';
 
 export default function FontSelect({
   font='Arial',
@@ -21,16 +24,17 @@ export default function FontSelect({
   // Detecting Graphite-enabled fonts
   const isGraphiteAssumed = useAssumeGraphite({ testClient: 'firefox', alwaysUse: false });
   const detectedGraphiteFonts = useDetectFonts({ fonts: (isGraphiteAssumed ? graphiteFonts : []), testString });
+
   const graphiteFontMenuItems = detectedGraphiteFonts.map((font, index) => (
     <MenuItem key={index} value={font.name}>
-      <Typography variant="body2" component="span" style={{ fontFamily: font.name }}>{font.name}</Typography>
+      <FontMenuItem font={font} />
     </MenuItem>
   ));
   //Detecting fonts:
   const detectedFonts = useDetectFonts({ fonts: regularFonts, testString });
-  const detectedFontsComponents = detectedFonts.map((font, index) => (
+  const detectedFontMenuItems = detectedFonts.map((font, index) => (
     <MenuItem key={index} value={font.name}>
-      <Typography variant="body2" component="span" style={{ fontFamily: font.name }}>{font.name}</Typography>
+      <FontMenuItem font={font} />
     </MenuItem>
   ));
 
@@ -57,7 +61,7 @@ export default function FontSelect({
         style={{ background: 'white' }}
         onChange={handleChange}
       >
-        <MenuItem key={1} value="Arial">
+        <MenuItem key={1} value="inherit">
           <Typography variant="body2" component="span">default</Typography>
         </MenuItem>
         {isGraphiteAssumed && <hr />}
@@ -71,9 +75,9 @@ export default function FontSelect({
         <hr />
         <b>
           Detected Fonts:{' '}
-          {detectedFontsComponents.length === 0 && noneDetectedMsg}
+          {detectedFontMenuItems.length === 0 && noneDetectedMsg}
         </b>
-        {detectedFontsComponents}
+        {detectedFontMenuItems}
       </Select>
     </FormControl>
   );

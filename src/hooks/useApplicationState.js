@@ -9,7 +9,7 @@ export default function useApplicationState() {
     preview: true,
     sectionIndex: 1,
     sectionable: false,
-    font: 'Arial',
+    font: 'inherit',
     fontSize: '1em',
   };
   const [state, setState] = useState(initialState);
